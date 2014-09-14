@@ -123,6 +123,7 @@ public class ZundaFrame extends JFrame {
 				} else {
 					// エラー
 					stringArea.setBackground(Color.red);
+					System.out.println("a");
 					return;
 
 				}
@@ -131,6 +132,7 @@ public class ZundaFrame extends JFrame {
 			}
 		} else {
 			stringArea.setBackground(Color.red);
+			System.out.println("b");
 		}
 	}
 
@@ -143,7 +145,12 @@ public class ZundaFrame extends JFrame {
 				.forName((String) codeTypeComboBox.getSelectedItem()));
 		StringBuffer strBuff = new StringBuffer(bytes.length * 2);
 		for (byte b : bytes) {
-			strBuff.append(Integer.toHexString(0xFF & b));
+			int val = 0xFF & b;
+			if (val < 0x10) {
+				strBuff.append("0");
+			}
+			String hex = Integer.toHexString(val);
+			strBuff.append(hex);
 		}
 		hexArea.setText(strBuff.toString().toUpperCase());
 	}
