@@ -123,16 +123,14 @@ public class ZundaFrame extends JFrame {
 				} else {
 					// エラー
 					stringArea.setBackground(Color.red);
-					System.out.println("a");
 					return;
 
 				}
-				stringArea.setText(new String(bytes, Charset
-						.forName((String) codeTypeComboBox.getSelectedItem())));
 			}
+			stringArea.setText(new String(bytes, Charset
+					.forName((String) codeTypeComboBox.getSelectedItem())));
 		} else {
 			stringArea.setBackground(Color.red);
-			System.out.println("b");
 		}
 	}
 
